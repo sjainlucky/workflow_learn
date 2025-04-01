@@ -1,0 +1,20 @@
+name: Manual Dispatch Example
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Enter your name'
+        required: true
+        default: 'JohnDoe'
+      greeting:
+        description: 'Choose a greeting'
+        required: false
+        default: 'Hello'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Greeting
+        run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.username }}!"
